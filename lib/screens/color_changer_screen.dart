@@ -1,5 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:fluttertest/services/color_service.dart';
 
 class ColorChangerScreen extends StatefulWidget {
   const ColorChangerScreen({super.key});
@@ -10,27 +10,11 @@ class ColorChangerScreen extends StatefulWidget {
 
 class _ColorChangerScreenState extends State<ColorChangerScreen> {
   Color _backgroundColor = Colors.red;
-  final int _colorConstant = 256;
 
   void _changeColor() {
-    final random = Random();
     setState(() {
-      _backgroundColor = Color.fromARGB(
-        _colorConstant - 1,
-        random.nextInt(_colorConstant),
-        random.nextInt(_colorConstant),
-        random.nextInt(_colorConstant),
-      );
+      _backgroundColor = ColorService.generateRandomColor();
     });
-  }
-
-  String _colorToHex(Color color) {
-    int r = (color.r * 255.0).round() & 0xff;
-    int g = (color.g * 255.0).round() & 0xff;
-    int b = (color.b * 255.0).round() & 0xff;
-
-    return '#${r.toRadixString(16).padLeft(2, '0')}${g.toRadixString(16).padLeft(2, '0')}${b.toRadixString(16).padLeft(2, '0')}'
-        .toUpperCase();
   }
 
   @override
@@ -55,7 +39,9 @@ class _ColorChangerScreenState extends State<ColorChangerScreen> {
               bottom: 40,
               left: 0,
               right: 0,
-              child: Center(child: Text(_colorToHex(_backgroundColor))),
+              child: Center(
+                child: Text(ColorService.colorToHex(_backgroundColor)),
+              ),
             ),
           ],
         ),

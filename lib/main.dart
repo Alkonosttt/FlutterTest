@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertest/screens/colorchangerscreen.dart';
+import 'package:fluttertest/screens/color_changer_screen.dart';
 
 void main() {
   runApp(const Main());
