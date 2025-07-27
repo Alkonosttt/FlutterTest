@@ -6,6 +6,7 @@ class ColorService {
 
   static Color generateRandomColor() {
     final random = Random();
+
     return Color.fromARGB(
       _colorMax - 1,
       random.nextInt(_colorMax),
@@ -21,5 +22,14 @@ class ColorService {
 
     return '#${r.toRadixString(16).padLeft(2, '0')}${g.toRadixString(16).padLeft(2, '0')}${b.toRadixString(16).padLeft(2, '0')}'
         .toUpperCase();
+  }
+
+  static Color getComplementaryColor(Color color) {
+    return Color.fromARGB(
+      (color.a * (_colorMax - 1)).round(),
+      _colorMax - 1 - (color.r * (_colorMax - 1)).round(),
+      _colorMax - 1 - (color.g * (_colorMax - 1)).round(),
+      _colorMax - 1 - (color.b * (_colorMax - 1)).round(),
+    );
   }
 }

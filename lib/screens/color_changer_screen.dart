@@ -30,7 +30,7 @@ class _ColorChangerScreenState extends State<ColorChangerScreen> {
                 'Hello there',
                 style: TextStyle(
                   fontSize: 32,
-                  color: Colors.black.withAlpha(50),
+                  color: ColorService.getComplementaryColor(_backgroundColor),
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -40,7 +40,15 @@ class _ColorChangerScreenState extends State<ColorChangerScreen> {
               left: 0,
               right: 0,
               child: Center(
-                child: Text(ColorService.colorToHex(_backgroundColor)),
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(
+                      '🌝 Background ${ColorService.colorToHex(_backgroundColor)}\n🌚 Complementary ${ColorService.colorToHex(ColorService.getComplementaryColor(_backgroundColor))}',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
