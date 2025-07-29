@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// Each card is a rounded rectangle representing a color from
 /// the [favoriteColors] list.
 /// The currently active color is visually highlighted with
-/// a white 60% transparent border.
+/// a white border.
 /// Tapping a card triggers the [onColorTap] callback with the tapped color.
 class FavoriteColorCards extends StatelessWidget {
   /// The list of favorite colors to display.
